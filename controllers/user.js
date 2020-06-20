@@ -6,7 +6,7 @@ const LocalStategy = require('passport-local').Strategy;
 
 passport.use(new LocalStategy(
     {
-        usernameField: 'email'
+        usernameField: 'email'  
     },
     async function (email, password, done) {
 
@@ -51,6 +51,6 @@ module.exports = {
     login: passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/login',
-        failureFlash: true
+        failureFlash:false 
     })
 }

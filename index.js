@@ -5,13 +5,16 @@ const apiRouters = require('./routers');
 const bodyParser = require('body-parser');
 const passport = require("passport");
 const UserModel = require('./models/user');
+var cors = require('cors');
+//var flash = require('connect-flash');
 // configs 
 mongoose.connect('mongodb://localhost/hangman', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
+app.use(cors({origin : "http://localhost:3006" , credentials : true  })); 
 app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
-
+//app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -43,6 +46,6 @@ passport.deserializeUser(async function (id, done) {
 app.use('/api', apiRouters);
 
 
-app.listen(3001, () => {
+app.listen(3000, () => {
     console.log('app launched');
 })

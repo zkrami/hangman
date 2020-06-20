@@ -14,7 +14,7 @@ function UserLoggedIn (req, res, next) {
 
 }
 
-router.post('/pro', UserLoggedIn, (req, res) => {
+router.get('/pro', UserLoggedIn, (req, res) => {
 
     res.send(req.user);
 });
