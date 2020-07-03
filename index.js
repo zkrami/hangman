@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
+const server = require('http').createServer(app);
 const mongoose = require('mongoose');
 const apiRouters = require('./routers');
 const bodyParser = require('body-parser');
 const passport = require("passport");
 const UserModel = require('./models/user');
+const socketIO = require("./socket")(server); 
 var cors = require('cors');
 //var flash = require('connect-flash');
 // configs 
@@ -46,6 +48,6 @@ passport.deserializeUser(async function (id, done) {
 app.use('/api', apiRouters);
 
 
-app.listen(3000, () => {
-    console.log('app launched');
+server.listen(3000, () => {
+    console.log('app launched on 3000');
 })
