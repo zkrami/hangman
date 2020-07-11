@@ -32,7 +32,6 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(async function (id, done) {
-
     try {
         let user = await UserModel.findById(id);
         done(null, user);
@@ -49,5 +48,5 @@ app.use('/api', apiRouters);
 
 
 server.listen(3000, () => {
-    console.log('app launched on 3000');
+    console.log('app launched on 3000');    
 })
